@@ -9,11 +9,13 @@ view: user_facts {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [detail*]
   }
 
   dimension: user_id {
+    primary_key: yes
     type: number
     sql: ${TABLE}.user_id ;;
   }
@@ -36,6 +38,15 @@ view: user_facts {
   dimension_group: latest_order_date {
     type: time
     sql: ${TABLE}.latest_order_date ;;
+  }
+
+  measure: average_lifetime_revenue {
+    type: average
+    sql: ${TABLE}.lifetime_revenue ;;
+  }
+  measure: average_lifetime_order_count {
+    type: average
+    sql: ${TABLE}.lifetime_order_count ;;
   }
 
   set: detail {
