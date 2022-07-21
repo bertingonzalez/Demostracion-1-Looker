@@ -2,24 +2,6 @@ view: order_items {
   sql_table_name: public.order_items ;;
   drill_fields: [id]
 
-  parameter: select_timeframe {
-    type: unquoted
-    default_value: "created_month"
-    allowed_value: {
-      value: "created_date"
-      label: "Date"
-    }
-    allowed_value: {
-      value: "created_week"
-      label: "Week"
-    }
-    allowed_value: {
-      value: "created_month"
-      label: "Month"
-    }
-  }
-
-
 
   dimension: id {
     primary_key: yes
