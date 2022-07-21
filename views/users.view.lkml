@@ -29,6 +29,12 @@ view: users {
     }
   }
 
+  dimension: order_history_button {
+    label: "Order History"
+    sql: ${TABLE}.id ;;
+    html: <a href="/explore/training_ecommerce/order_items?fields=order_items.order_item_id, users.first_name, users.last_name, users.id, order_items.order_item_count, order_items.total_revenue&f[users.id]={{ value }}"><button>Order History</button></a> ;;
+  }
+
   dimension: country {
     type: string
     map_layer_name: countries
