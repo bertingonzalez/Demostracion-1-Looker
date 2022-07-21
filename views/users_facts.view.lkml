@@ -3,8 +3,6 @@ view: user_facts {
     sql: SELECT order_items.id AS user_id
           ,COUNT(distinct order_items.order_id) AS lifetime_order_count
           ,SUM(order_items.sale_price) AS lifetime_revenue
-          ,MIN(order_items.date_sample1) AS first_order_date
-          ,MAX(order_items.date_sample1) AS latest_order_date
       FROM public.order_items
       GROUP BY user_id
        ;;
