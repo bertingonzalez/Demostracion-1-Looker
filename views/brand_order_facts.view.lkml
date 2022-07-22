@@ -6,6 +6,8 @@ view: brand_order_facts {
       derived_column: brand_rank {
         sql: row_number() over (order by total_revenue desc) ;;
       }
+      bind_all_filters: yes {
+      }
     }
   }
 
