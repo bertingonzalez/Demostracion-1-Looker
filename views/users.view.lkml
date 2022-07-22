@@ -1,4 +1,7 @@
+include: location.view
+
 view: users {
+  extends: [location]
   sql_table_name: public.users ;;
   drill_fields: [id]
 
@@ -20,16 +23,6 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: age {
-    type: number
-    sql: ${TABLE}.age ;;
-
-  }
-
-  dimension: city {
-    type: string
-    sql: ${TABLE}.city ;;
-  }
 
   dimension: city_link {
     type: string
@@ -47,11 +40,6 @@ view: users {
     html: <a href="/explore/bertinmtr/users/order_items?fields=order_items.order_item_id, users.first_name, users.last_name, users.id, order_items.order_item_count, order_items.total_revenue&f[users.id]={{ value }}"><button>Order History</button></a> ;;
   }
 
-  dimension: country {
-    type: string
-    map_layer_name: countries
-    sql: ${TABLE}.country ;;
-  }
 
   dimension_group: created {
     type: time
@@ -87,10 +75,6 @@ view: users {
     sql: ${TABLE}.last_name ;;
   }
 
-  dimension: state {
-    type: string
-    sql: ${TABLE}.state ;;
-  }
 
   dimension: state_link {
     type: string
@@ -108,10 +92,6 @@ view: users {
     sql: ${TABLE}.traffic_source ;;
   }
 
-  dimension: zip {
-    type: zipcode
-    sql: ${TABLE}.zip ;;
-  }
 
   measure: dynamic_count {
     type: count_distinct
